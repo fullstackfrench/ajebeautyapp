@@ -1,0 +1,92 @@
+body{
+    padding-top: 20px;
+    word-wrap:break-word;
+  }
+  img{
+    height: 200px;
+  }
+  
+  header {
+    display: flex;
+    
+  }
+  
+  h1 { 
+    width: 80%; 
+    text-align: center;
+    padding-top: 40px;
+    margin-left: 20%;
+  }
+  
+  .btn-sm {
+    padding: 5px 5px;
+    width: 11%;
+    height: 40px;
+  }
+  
+  .login {
+    margin-right: 1%;
+  }
+  
+  .signUp {
+    margin-right: 2%;
+  }
+  .search {
+    width: 50%;
+    height: 40px;
+    margin-top: 100px;
+    margin-left: 15%;
+  }
+  
+  button {
+    height: 40px;
+  }
+  
+  h2 {
+    text-align: center;
+  
+  }
+  
+  .middle {
+    margin-top: 60px;
+    display: flex;
+  }
+  
+  .middle section {
+    width: 25%;
+    height: 150px;
+    border: 1px solid black;
+  }
+  
+  .bottom {
+    display: flex;
+  }
+  .bottom section {
+    
+    height: 200px;
+    border: 1px solid black;
+  }
+  
+  .portfolio {
+    display: flex;
+  }
+  
+  .portfolio section {
+    height: 200px;
+    border: 1px solid black;
+    width: 33.33%;
+  }
+  
+  .newRole, .submit, .newBusinessName {
+    display: none;
+  }
+  
+  .showInput {
+    display: block;
+    
+  }
+
+  section.featured a {
+    display: inline-block;
+    width: 33%; 
+  }

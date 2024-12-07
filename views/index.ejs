@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <title>aje beauty</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>aje beauty</h1>
+    <a href="/login" class="btn btn-default btn-sm login">Login</a>
+    <a href="/signup" class="btn btn-default btn-sm signUp">Sign Up</a>
+    <form action="/logout/?_method=GET" method="POST">
+      <button>Logout</button>
+    </form>
+  </header>
+
+        
+  <section>
+    <form action="/profiles/search?_GET" method="POST">
+      <input class="search" type="text" placeholder="Service, stylist, salon" name="msg">
+      <button type="submit" class="search-button">Search</button>
+    </form>
+  </section>
+ 
+  <h2>browse by services</h2>
+  <section class="middle services">
+    
+    <section>
+
+      <h3>silk press</h3>
+    </section>
+    <section>
+      <h3>braids</h3>
+    </section>
+    <section>
+      <h3>locs</h3>
+    </section>
+    <section>
+      <h3>hair cuts</h3>
+    </section>
+
+
+  </section>
+
+  <h2>Top-rated beauty professionals</h2>
+  <section class="featured bottom">
+    <% for (let i = 0; i < 3&&i<profiles.length; i++){ %>
+      <a href="/profile/<%= profiles[i]._id %>"><section>
+        <span><%=profiles[i].businessName %></span>
+        <span><%=profiles[i].name %></span>
+        <span><%=profiles[i].role %></span>
+      </section></a>
+    <%} %>
+    
+  </section>
+  
+
+
+
+
+</body>
+</html>

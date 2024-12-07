@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+    <title>aje beauty</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>aje beauty</h1>
+    <form action="/logout/?_method=GET" method="POST">
+      <button>Logout</button>
+    </form>
+  </header>
+  <% if (user?.userType === 'professional') { %>
+
+  <h2>Set Up Your Professional Profile</h2>
+ 
+  <section>
+  <form action="/profile/<%= profile == undefined ? '' : '?_method=PUT' %>" enctype="multipart/form-data" method= "POST">
+    <label for="profile-photo">Upload Profile Photo</label>
+    <input required type="file" id="profile-photo" name="profile-photo" accept="image/png, image/jpeg, image/jpg" />
+    <label for="name">Name</label>
+    <input id="name" type="text" name="name" value="<%=profile?.name ? profile.name : '' %>">
+    <label for="business-name">Business Name</label>
+    <input type="text" name="businessName" id="business-name" value="<%=profile?.businessName ? profile.businessName : '' %>">
+    
+    <label for="role">Role</label>
+    <select name="role" id="role">
+      <option>Please select a role:</option>
+      <option value="hairstylist" <%=profile?.role == "hairstylist"  ? "selected" : '' %>>Hairstylist</option>
+      <option value="barber" <%=profile?.role == "barber"  ? "selected" : '' %>>Barber</option>
+      <option value="make-up-artist" <%=profile?.role == "make-up-artist"  ? "selected" : '' %>>Make-Up Artist</option>
+      <option value="esthetician" <%=profile?.role == "esthetician"  ? "selected" : '' %>>Esthetician</option>
+    </select>
+
+    <label for="services"></label> 
+    <div id="services">
+      <input type="checkbox" id="silk-press" name="silkpress"  <%= profile?.services?.includes('Silk-press') ? 'checked= "true"' : '' %>>
+      <label for="silk-press">Silk Press</label>
+      <input type="checkbox" id="braids" name="braids"  <%= profile?.services?.includes('Braids') ? 'checked= "true"' : '' %>>
+      <label for="braids">Braids</label>
+      <input type="checkbox" id="locs" name="locs" <%= profile?.services?.includes('Locs') ? 'checked= "true"' : '' %>>
+      <label for="locs">Locs/Retwists</label>
+      <input type="checkbox" id="curly-cuts" name="curlycuts" <%= profile?.services?.includes('Curly-cuts') ? 'checked= "true"' : '' %>>
+      <label for="curly-cuts">Curly Cuts</label>
+    </div>
+    
+    
+    <button>Submit</button>
+  </form>
+  <% if (profile) {%>
+    
+    <form action="/profile/portfolio %>" enctype="multipart/form-data" method= "POST">
+      <div>
+        <label for="portfolio">Add pictures to your portfolio.</label>
+        <input required type="file" id="portfolio" name="portfolio" accept="image/png, image/jpeg, image/jpg" />
+      </div>
+      <button>Submit</button>
+    </form>
+  <%} %>
+
+ </section>
+
+   <% } else { %>
+
+   
+  <section>
+    <h1 class="businessName"><%=profile.businessName %></h1>
+  </section>
+
+
+  <section>
+    <img src="<%= profile.image%>">
+    <h2><%=profile.name %></h2>
+    <p class="role"><%=profile.role %></p>
+    <h4>Services</h4>
+    <ul>
+      <li><%=profile.services %></li>
+    </ul>
+  </section>
+        
+  <section>
+    <h3>Portfolio</h3>
+    <ul class="portfolio">
+      <% for(var i=0; i<profile.portfolio.length; i++) {%>
+        <li class="col-6 justify-content-between mt-5">
+            <img class="img-fluid" src="<%= profile.portfolio[i].image%>">
+        </li>
+      <% } %>
+      </ul>
+  </section>
+
+  <button class="reviews">See Reviews</button>
+
+  <button class="edit">Edit</button>
+  
+  <button class="submit">Submit</button>
+
+  <button class="delete">Delete Account</button>
+  <% } %>
+
+
+
+</body>
+</html>
