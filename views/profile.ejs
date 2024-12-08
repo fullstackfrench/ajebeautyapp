@@ -62,6 +62,7 @@
     </form>
   <%} %>
 
+<button class="delete">Delete Account</button>
  </section>
 
    <% } else { %>
@@ -93,13 +94,31 @@
       </ul>
   </section>
 
-  <button class="reviews">See Reviews</button>
+  <section>
+    <h2>Leave a Review</h2>
+      <form action="/review/createReview/<%= profile.id %>" method="POST">
+        <div class="mb-3">
+            <label for="review" class="form-label">Review</label>
+            <input type="text" class="form-control" id="review" name="review">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </section>
+  <section>
+    <h3>Reviews</h3>
+    <ul class="row list-unstyled">
+      <% for(var i=0; i<reviews.length; i++) {%>
+        <li class="col-6 justify-content-between mt-5">
+          <p><%= reviews[i].reviewText%></p>
+        </li>
+      <% } %>
+    </ul>
+  </section>
+ 
 
-  <button class="edit">Edit</button>
-  
-  <button class="submit">Submit</button>
 
-  <button class="delete">Delete Account</button>
+
+
   <% } %>
 
 

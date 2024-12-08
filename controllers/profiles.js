@@ -1,11 +1,12 @@
 const cloudinary = require("../middleware/cloudinary");
 const Profile = require("../models/Profile");
+const Reviews = require("../models/Reviews");
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
       const profile = await Profile.findOne({ user: req.user.id });
-      res.render("profile.ejs", { profile: profile, user: req.user });
+      res.render("profile.ejs", { profile: profile, user: req.user});
     } catch (err) {
       console.log(err);
     }
@@ -21,7 +22,8 @@ module.exports = {
   getProfileById: async (req, res) => {
     try {
       const profile = await Profile.findById(req.params.id);
-      res.render("profile.ejs", { profile: profile, user: req.user });
+      const reviews = await Reviews.find()
+      res.render("profile.ejs", { profile: profile, user: req.user, reviews: reviews });
     } catch (err) {
       console.log(err);
     }

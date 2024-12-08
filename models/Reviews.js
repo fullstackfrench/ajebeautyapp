@@ -5,17 +5,21 @@ const ReviewSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  cloudinaryId: {
-    type: String,
-    require: true,
-  },
-name: {
-    type: String,
-    required: true,
-  },
+  // cloudinaryId: {
+  //   type: String,
+  //   require: true,
+  // },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+  },
+  profile: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Profile",
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   }
 });
 
