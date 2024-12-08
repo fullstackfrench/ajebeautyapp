@@ -83,6 +83,23 @@ module.exports = {
       res.redirect("/profile")
       
   },
+  profileSearch: async (req, res) => {
+    console.log(req.body.search)
+   let profiles = await Profile.aggregate([
+      {
+        $search: {
+          index: "aje-search",
+          text: {
+            query: req.body.search,
+            path: {
+              wildcard: "*"
+            }
+          }
+        }
+      }
+    ]);
+    res.render('search.ejs', {profiles: profiles})
+  },
   deleteProfile: async (req, res) => {
     try {
       // Find post by id

@@ -9,10 +9,11 @@ router.get("/", profilesController.getProfile);
 
 router.get("/:id", profilesController.getProfileById);
 
+router.post("/search", profilesController.profileSearch);
+
 router.post("/", ensureAuth, upload.single('profile-photo'), profilesController.createProfile);
 
 router.post("/portfolio", ensureAuth, upload.single('portfolio'), profilesController.updatePortfolio);
-
 
 router.put("/", ensureAuth, profilesController.updateProfile);
 

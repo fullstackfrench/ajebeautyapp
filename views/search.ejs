@@ -1,0 +1,11 @@
+<%- include('partials/header') -%>
+<ul class="portfolio">
+  <% for(var i=0; i<profiles.length; i++) {%>
+    <li class="col-6 justify-content-between mt-5">
+        <span><%=profiles[i].businessName %></span>
+        <span><%=profiles[i].name %></span>
+        <span><%=profiles[i].role %></span>
+    </li>
+  <% } %>
+  </ul>
+<%- include('partials/footer') -%>
