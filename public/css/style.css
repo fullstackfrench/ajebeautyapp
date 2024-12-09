@@ -1,3 +1,52 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 @font-face {
   font-family: 'Hatton';
   src: url('../hatton-font-family/pphatton-bold-webfont.woff');
@@ -5,66 +54,153 @@
 }
 
 body{
-    padding-top: 20px;
+
     word-wrap:break-word;
+    font-size: 62.5%;
   }
   img{
     height: 200px;
   }
   
   header {
+    padding-top: 20px;
     display: flex;
+    border-bottom: lightgrey solid 1px;
+    padding-bottom: 20px;
+
     
   }
   
   h1 { 
     width: 80%; 
     text-align: center;
-    padding-top: 40px;
-    margin-left: 20%;
+    margin-left: 16%;
     font-family: 'Hatton', sans-serif;
     font-weight: bold;
+    color: #ECEC64;
+    font-size: 3rem;
   }
-  
+
+  .top-heading {
+    color: white;
+    font-size: 2rem;
+    font-family: "Montserrat", serif;
+    font-weight: bold;
+    padding-top: 121px;
+    width: 50%;
+    margin-left: 25%;
+    text-align: center;
+  }
+  .top {
+    background-image: url(../imgs/aje-beauty-search.png);
+    height: 400px;
+    width: 67.5%;
+    margin-left: 16%;
+  }
   .btn-sm {
     padding: 5px 5px;
     width: 11%;
     height: 40px;
   }
   
-  .login {
+  .login, .logout {
     margin-right: 1%;
+    font-weight: 700;
+    border: none;
+    font-family: "Montserrat", serif;
+    font-size: 1rem;
+    
+
   }
-  
+  .logout {
+    background-color: white;
+    margin-left: 25%;
+  }
   .signUp {
     margin-right: 2%;
+    border-radius: 1%;
+    border: none;
+    background-color: #ECEC64;
+    font-family: "Montserrat", serif;
+    font-size: .8rem;
+    font-weight: 700;
+    padding-top: 8px;
+    
   }
   .search {
-    width: 50%;
+    width: 45%;
     height: 40px;
-    margin-top: 100px;
-    margin-left: 15%;
+    margin-top: 55px;
+    margin-left: 23%;
+    border-radius: 1%;
+    border: none;
+    font-family: "Montserrat", serif;
+    font-size: 0.8rem;
+    padding-left: 2%;
+  }
+  
+  .search-button {
+    width: 8%;
+    border-radius: 1%;
+    border: none;
+    background-color: #ECEC64;
+    font-family: "Montserrat", serif;
+    font-size: 0.68rem;
+    font-weight: 500;
   }
   
   button {
     height: 40px;
   }
   
-  h2 {
+ .middle-heading {
     text-align: center;
+    font-family: "Montserrat", serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-top: 30px;
   
   }
+
+  .braids {
+    background: url(../imgs/braids.png);
+    width: 169px;
+    height: 200px;
+    border: none;
+    box-shadow: 5px 5px 5px grey;
+  }
   
+  .silk-press {
+    background: url(../imgs/silk-press.png);
+    width: 169px;
+    height: 200px;
+    border: none;
+    box-shadow: 5px 5px 5px grey;
+  }
+
+  .locs {
+    background: url(../imgs/locs.png);
+    width: 169px;
+    height: 200px;
+    border: none;
+    box-shadow: 5px 5px 5px grey;
+  }
+
+  .haircut {
+    background: url(../imgs/haircut.png);
+    width: 169px;
+    height: 200px;
+    border: none;
+    box-shadow: 5px 5px 5px grey;
+  }
   .middle {
     margin-top: 60px;
     display: flex;
+    justify-content: space-around;
   }
   
-  .middle section {
-    width: 25%;
-    height: 150px;
-    border: 1px solid black;
-  }
+ 
+  
   
   .bottom {
     display: flex;

@@ -4,48 +4,52 @@
     <title>aje beauty</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
   <header>
+    <form action="/logout/?_method=GET" method="POST">
+      <button class="logout">Logout</button>
+    </form>
     <h1>aje beauty</h1>
     <a href="/login" class="btn btn-default btn-sm login">Login</a>
     <a href="/signup" class="btn btn-default btn-sm signUp">Sign Up</a>
-    <form action="/logout/?_method=GET" method="POST">
-      <button>Logout</button>
-    </form>
   </header>
 
         
-  <section>
-    <form action="/profile/search" method="POST">
+  <section class="top">
+    <h2 class="top-heading">A melanated marketplace of beauty professionals</h2>
+    <form class="search-engine" action="/profile/search" method="POST">
       <input class="search" type="text" placeholder="Service, stylist, salon" name="search">
       <button type="submit" class="search-button">Search</button>
     </form>
   </section>
  
-  <h2>browse by services</h2>
+  <h2 class="middle-heading">browse by services</h2>
   <section class="middle services">
     
-    <section>
-      <form action="/profile/search/silkpress" method="POST">
-        <button type="submit" class="search-button">Silk-Press</button>
+    <section class="filter">
+      <form  action="/profile/search/silkpress" method="POST">
+        <button class="silk-press" type="submit" ></button>
       </form>
     </section>
-    <section>
-      <form action="/profile/search/braids" method="POST">
-        <button type="submit" class="search-button">Braids</button>
+    <section class="filter">
+      <form  action="/profile/search/braids" method="POST">
+        <button class="braids" type="submit" ></button>
       </form>
     </section>
-    <section>
+    <section class="filter">
       <form action="/profile/search/locs" method="POST">
-        <button type="submit" class="search-button">Locs</button>
+        <button class="locs" type="submit" ></button>
       </form>
     </section>
-    <section>
+    <section class="filter">
       <form action="/profile/search/curlycuts" method="POST">
-        <button type="submit" class="search-button">Curly-Cuts</button>
+        <button class="haircut" type="submit" ></button>
       </form>
     </section>
     </section>
