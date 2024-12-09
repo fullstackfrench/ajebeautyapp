@@ -1,3 +1,9 @@
+@font-face {
+  font-family: Hatton;
+  src: url(/public/hatton-font-family/PP\ Hatton\ Bold\ 700.otf) format('opentype');
+  font-weight: bold;
+}
+
 body{
     padding-top: 20px;
     word-wrap:break-word;
@@ -16,6 +22,7 @@ body{
     text-align: center;
     padding-top: 40px;
     margin-left: 20%;
+    font-family: Hatton, sans-serif;
   }
   
   .btn-sm {

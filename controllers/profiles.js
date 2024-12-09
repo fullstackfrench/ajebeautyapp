@@ -102,6 +102,70 @@ module.exports = {
     ]);
     res.render('search.ejs', {profiles: profiles})
   },
+  getSilkPress: async (req, res) => {
+   let profiles = await Profile.aggregate([
+      {
+        $search: {
+          index: "aje-search",
+          text: {
+            query: "silk",
+            path: {
+              wildcard: "*"
+            }
+          }
+        }
+      }
+    ]);
+    res.render('search.ejs', {profiles: profiles})
+  },
+  getBraids: async (req, res) => {
+    let profiles = await Profile.aggregate([
+       {
+         $search: {
+           index: "aje-search",
+           text: {
+             query: "braids",
+             path: {
+               wildcard: "*"
+             }
+           }
+         }
+       }
+     ]);
+     res.render('search.ejs', {profiles: profiles})
+   },
+   getLocs: async (req, res) => {
+    let profiles = await Profile.aggregate([
+       {
+         $search: {
+           index: "aje-search",
+           text: {
+             query: "locs",
+             path: {
+               wildcard: "*"
+             }
+           }
+         }
+       }
+     ]);
+     res.render('search.ejs', {profiles: profiles})
+   },
+   getCurlyCuts: async (req, res) => {
+    let profiles = await Profile.aggregate([
+       {
+         $search: {
+           index: "aje-search",
+           text: {
+             query: "curly-cuts",
+             path: {
+               wildcard: "*"
+             }
+           }
+         }
+       }
+     ]);
+     res.render('search.ejs', {profiles: profiles})
+   },
   deleteProfile: async (req, res) => {
     try {
       // Find post by id

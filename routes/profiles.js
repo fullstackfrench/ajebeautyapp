@@ -9,6 +9,14 @@ router.get("/", profilesController.getProfile);
 
 router.get("/:id", profilesController.getProfileById);
 
+router.post("/search/silkpress", profilesController.getSilkPress);
+
+router.post("/search/braids", profilesController.getBraids);
+
+router.post("/search/locs", profilesController.getLocs);
+
+router.post("/search/curlycuts", profilesController.getCurlyCuts);
+
 router.post("/search", profilesController.profileSearch);
 
 router.post("/", ensureAuth, upload.single('profile-photo'), profilesController.createProfile);
