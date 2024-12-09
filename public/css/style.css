@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Hatton';
-  src: url(/public/hatton-font-family/HattonBold.otf) format('opentype');
+  src: url(/public/hatton-font-family/PPHatton-Bold.otf) format('opentype');
   font-weight: bold;
 }
 
@@ -22,7 +22,7 @@ body{
     text-align: center;
     padding-top: 40px;
     margin-left: 20%;
-    font-family: 'HattonBold.otf', sans-serif;
+    font-family: 'PPHatton-Bold.otf', sans-serif;
   }
   
   .btn-sm {
