@@ -383,6 +383,29 @@ header.container {
     font-family: "Montserrat", serif;
     font-size: .8rem;
   }
+
+  input#profile-photo, .portfolo-photo {
+    display: block; 
+    margin-left: 25%;
+  }
+
+  .portfolio-header {
+    font-family: "Montserrat", serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-left: 25%;
+    margin-top: 40px;
+   }
+    
+   button.delete {
+    font-weight: 700;
+    border: none;
+    font-family: "Montserrat", serif;
+    font-size: 1rem;
+    background-color: white;
+    margin-left: 80%;
+   }
+  
   footer {
     height: 100px;
   }

@@ -64,16 +64,17 @@
           <input required type="file" id="profile-photo" name="profile-photo"
             accept="image/png, image/jpeg, image/jpg" />
 
-          <button type="submit">Submit</button>
+          <button type="submit" class="login-submit">Submit</button>
         </form>
         <% if (profile) {%>
 
+          <h3 class="portfolio-header">Portfolio</h3>
           <form action="/profile/portfolio" enctype="multipart/form-data" method="POST">
             <div>
               <label for="portfolio" class="form-label profile-label">Add pictures to your portfolio.</label>
-              <input required type="file" id="portfolio" name="portfolio" accept="image/png, image/jpeg, image/jpg" />
+              <input class="portfolo-photo" required type="file" id="portfolio" name="portfolio" accept="image/png, image/jpeg, image/jpg" />
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" class="login-submit">Submit</button>
           </form>
           <%} %>
 
