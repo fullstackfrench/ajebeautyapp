@@ -167,15 +167,15 @@ module.exports = {
   deleteProfile: async (req, res) => {
     try {
       // Find post by id
-      let post = await Profile.findById(req.params.id);
+      let profile = await Profile.findById(req.params.id);
       // Delete image from cloudinary
-      await cloudinary.uploader.destroy(post.cloudinaryId);
+      await cloudinary.uploader.destroy(profile.cloudinaryId);
       // Delete post from db
       await Profile.findOneAndDelete(req.params.id);
-      console.log("Deleted Post");
-      res.redirect("/profile");
+      console.log("Deleted Profile!");
+      res.redirect("/");
     } catch (err) {
-      res.redirect("/profile");
+      res.redirect("/");
     }
   },
 };

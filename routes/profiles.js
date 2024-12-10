@@ -25,6 +25,6 @@ router.post("/portfolio", ensureAuth, upload.single('portfolio'), profilesContro
 
 router.put("/", ensureAuth, upload.single('profile-photo'), profilesController.updateProfile);
 
-router.delete("/:id", ensureAuth, profilesController.deleteProfile);
+router.delete("/deleteprofile/:id", ensureAuth, profilesController.deleteProfile);
 
 module.exports = router;
