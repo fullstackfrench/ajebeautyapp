@@ -39,7 +39,7 @@ exports.postLogin = async (req, res, next) => {
         return next(err);
       }
       req.flash("success", { msg: "Success! You are logged in." });
-      res.redirect(req.session.returnTo || "/");
+      res.redirect(req.session.returnTo || "/profile");
     });
   })(req, res, next);
 };

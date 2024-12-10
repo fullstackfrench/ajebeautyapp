@@ -1,127 +1,153 @@
 <!doctype html>
 <html>
+
 <head>
-    <title>aje beauty</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+  <title>aje beauty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
 
   <header>
     <h1>aje beauty</h1>
     <form action="/logout/?_method=GET" method="POST">
-      <button>Logout</button>
+      <button class="logout profilelogout">Logout</button>
     </form>
   </header>
-  <% if (user?.userType === 'professional') { %>
+  <% if (user?.userType==='professional' ) { %>
 
-  <h2>Set Up Your Professional Profile</h2>
- 
-  <section>
-  <form action="/profile<%= profile == undefined ? '' : '?_method=PUT' %>" enctype="multipart/form-data" method="POST">
-    <label for="profile-photo">Upload Profile Photo</label>
-    <input required type="file" id="profile-photo" name="profile-photo" accept="image/png, image/jpeg, image/jpg" />
-    <label for="name">Name</label>
-    <input id="name" type="text" name="name" value="<%=profile?.name ? profile.name : '' %>">
-    <label for="business-name">Business Name</label>
-    <input type="text" name="businessName" id="business-name" value="<%=profile?.businessName ? profile.businessName : '' %>">
-    
-    <label for="role">Role</label>
-    <select name="role" id="role">
-      <option>Please select a role:</option>
-      <option value="Hairstylist" <%=profile?.role == "Hairstylist"  ? "selected" : '' %>>Hairstylist</option>
-      <option value="Barber" <%=profile?.role == "Barber"  ? "selected" : '' %>>Barber</option>
-      <option value="Make-up Artist" <%=profile?.role == "Make-up Artist"  ? "selected" : '' %>>Make-Up Artist</option>
-      <option value="Esthetician" <%=profile?.role == "Esthetician"  ? "selected" : '' %>>Esthetician</option>
-    </select>
-
-    <label for="services"></label> 
-    <div id="services">
-      <input type="checkbox" id="silk-press" name="silkpress"  <%= profile?.services?.includes('Silk-press') ? 'checked= "true"' : '' %>>
-      <label for="silk-press">Silk Press</label>
-      <input type="checkbox" id="braids" name="braids"  <%= profile?.services?.includes('Braids') ? 'checked= "true"' : '' %>>
-      <label for="braids">Braids</label>
-      <input type="checkbox" id="locs" name="locs" <%= profile?.services?.includes('Locs') ? 'checked= "true"' : '' %>>
-      <label for="locs">Locs/Retwists</label>
-      <input type="checkbox" id="curly-cuts" name="curlycuts" <%= profile?.services?.includes('Curly-cuts') ? 'checked= "true"' : '' %>>
-      <label for="curly-cuts">Curly Cuts</label>
-    </div>
-    
-    
-    <button type="submit">Submit</button>
-  </form>
-  <% if (profile) {%>
-    
-    <form action="/profile/portfolio" enctype="multipart/form-data" method= "POST">
-      <div>
-        <label for="portfolio">Add pictures to your portfolio.</label>
-        <input required type="file" id="portfolio" name="portfolio" accept="image/png, image/jpeg, image/jpg" />
-      </div>
-      <button>Submit</button>
-    </form>
-  <%} %>
-
-<button class="delete">Delete Account</button>
- </section>
-
-   <% } else { %>
-
-   
-  <section>
-    <h1 class="businessName"><%=profile.businessName %></h1>
-  </section>
+    <section class="around-profile">
+      <section class="profile-center">
+        <h2 class="middle-heading set-up">Set up or make edits to your professional profile </h2>
 
 
-  <section>
-    <img src="<%= profile.image%>">
-    <h2><%=profile.name %></h2>
-    <p class="role"><%=profile.role %></p>
-    <h4>Services</h4>
-    <ul>
-      <li><%=profile.services %></li>
-    </ul>
-  </section>
+        <form action="/profile<%= profile == undefined ? '' : '?_method=PUT' %>" enctype="multipart/form-data"
+          method="POST">
         
-  <section>
-    <h3>Portfolio</h3>
-    <ul class="portfolio">
-      <% for(var i=0; i<profile.portfolio.length; i++) {%>
-        <li class="col-6 justify-content-between mt-5">
-            <img class="img-fluid" src="<%= profile.portfolio[i].image%>">
-        </li>
-      <% } %>
-      </ul>
-  </section>
+          <label for="name" class="form-label profile-label">Name</label>
+          <input class="form-control profile-control" id="name" type="text" name="name" value="<%=profile?.name ? profile.name : '' %>">
+          <label for="business-name" class="form-label profile-label">Business Name</label>
+          <input class="form-control profile-control" type="text" name="businessName" id="business-name"
+            value="<%=profile?.businessName ? profile.businessName : '' %>">
 
-  <section>
-    <h2>Leave a Review</h2>
-      <form action="/review/createReview/<%= profile.id %>" method="POST">
-        <div class="mb-3">
-            <label for="review" class="form-label">Review</label>
-            <input type="text" class="form-control" id="review" name="review">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-  </section>
-  <section>
-    <h3>Reviews</h3>
-    <ul class="row list-unstyled">
-      <% for(var i=0; i<reviews.length; i++) {%>
-        <li class="col-6 justify-content-between mt-5">
-          <p><%= reviews[i].reviewText%></p>
-        </li>
-      <% } %>
-    </ul>
-  </section>
- 
+          <label for="role" class="form-label profile-label">Role</label>
+          <select name="role" id="role">
+            <option>Please select a role:</option>
+            <option value="Hairstylist" <%=profile?.role=="Hairstylist" ? "selected" : '' %>>Hairstylist</option>
+            <option value="Barber" <%=profile?.role=="Barber" ? "selected" : '' %>>Barber</option>
+            <option value="Make-up Artist" <%=profile?.role=="Make-up Artist" ? "selected" : '' %>>Make-Up Artist
+            </option>
+            <option value="Esthetician" <%=profile?.role=="Esthetician" ? "selected" : '' %>>Esthetician</option>
+          </select>
+
+          <label for="services" class="form-label profile-label">Services</label>
+          <div id="services">
+            <input type="checkbox" id="silk-press" name="silkpress" <%=profile?.services?.includes('Silk-press')
+              ? 'checked= "true"' : '' %>>
+            <label for="silk-press">Silk Press</label>
+            <input type="checkbox" id="braids" name="braids" <%=profile?.services?.includes('Braids')
+              ? 'checked= "true"' : '' %>>
+            <label for="braids">Braids</label>
+            <input type="checkbox" id="locs" name="locs" <%=profile?.services?.includes('Locs') ? 'checked= "true"' : ''
+              %>>
+            <label for="locs">Locs/Retwists</label>
+            <input type="checkbox" id="curly-cuts" name="curlycuts" <%=profile?.services?.includes('Curly-cuts')
+              ? 'checked= "true"' : '' %>>
+            <label for="curly-cuts">Curly Cuts</label>
+          </div>
+          
+          <label for="profile-photo" class="form-label profile-label">Upload Profile Photo</label>
+          <input required type="file" id="profile-photo" name="profile-photo"
+            accept="image/png, image/jpeg, image/jpg" />
+
+          <button type="submit">Submit</button>
+        </form>
+        <% if (profile) {%>
+
+          <form action="/profile/portfolio" enctype="multipart/form-data" method="POST">
+            <div>
+              <label for="portfolio" class="form-label profile-label">Add pictures to your portfolio.</label>
+              <input required type="file" id="portfolio" name="portfolio" accept="image/png, image/jpeg, image/jpg" />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+          <%} %>
+
+            <button class="delete">Delete Account</button>
+
+
+            <% } else { %>
+
+
+              <section>
+                <h1 class="businessName">
+                  <%=profile.businessName %>
+                </h1>
+              </section>
+
+
+              <section>
+                <img src="<%= profile.image%>">
+                <h2>
+                  <%=profile.name %>
+                </h2>
+                <p class="role">
+                  <%=profile.role %>
+                </p>
+                <h4>Services</h4>
+                <ul>
+                  <li>
+                    <%=profile.services %>
+                  </li>
+                </ul>
+              </section>
+
+              <section>
+                <h3>Portfolio</h3>
+                <ul class="portfolio">
+                  <% for(var i=0; i<profile.portfolio.length; i++) {%>
+                    <li class="col-6 justify-content-between mt-5">
+                      <img class="img-fluid" src="<%= profile.portfolio[i].image%>">
+                    </li>
+                    <% } %>
+                </ul>
+              </section>
+
+              <section>
+                <h2>Leave a Review</h2>
+                <form action="/review/createReview/<%= profile.id %>" method="POST">
+                  <div class="mb-3">
+                    <label for="review" class="form-label">Review</label>
+                    <input type="text" class="form-control" id="review" name="review">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </section>
+              <section>
+                <h3>Reviews</h3>
+                <ul class="row list-unstyled">
+                  <% for(var i=0; i<reviews.length; i++) {%>
+                    <li class="col-6 justify-content-between mt-5">
+                      <p>
+                        <%= reviews[i].reviewText%>
+                      </p>
+                    </li>
+                    <% } %>
+                </ul>
+              </section>
 
 
 
 
-  <% } %>
 
-
+              <% } %>
+      </section>
+    </section>
 
 </body>
+
 </html>

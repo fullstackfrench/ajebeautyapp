@@ -72,6 +72,7 @@ header.container {
   text-align: center;
   justify-content: center;
 }
+
 .login-header {
   font-family: "Montserrat", serif;
   color: black;
@@ -85,7 +86,7 @@ header.container {
 }
 .form-label {
   font-family: "Montserrat", serif;
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: black;
   font-weight: 300;
   display: block;
@@ -98,7 +99,8 @@ header.container {
 .form-control {
   margin-left: 40%;
   width: 23%;
-  height: 25px;
+  height: 30px;
+  font-family: "Montserrat", serif;
 }
 
   
@@ -161,6 +163,8 @@ header.container {
     background-color: white;
     margin-left: 25%;
   }
+
+
   .signUp, .login-submit {
     margin-right: 2%;
     border-radius: 1%;
@@ -280,7 +284,9 @@ header.container {
   }
   .profile-photo {
     padding-top: 10px;
+    border-radius: 50%;
   }
+
   .user-name {
     font-family: "Montserrat", serif;
     color: black;
@@ -308,9 +314,7 @@ header.container {
     padding-bottom: 10px;
   }
 
-  .profile-photo {
-    border-radius: 50%;
-  }
+  
   .portfolio {
     display: flex;
   }
@@ -340,6 +344,51 @@ header.container {
     text-decoration: none;
   }
 
+  .around-profile {
+    background-color: #FDFDEF;
+    display: flex;
+    justify-content: center;
+
+
+  }
+
+  .profile-center {
+    margin-top: 100px;
+    background-color: white;
+    width: 75%;
+
+  }
+  .logout.profilelogout {
+    margin-left: 0;
+    margin-right: 25px;
+  }
+  .set-up {
+    font-size: 1.60rem;
+    margin-top: 0;
+    padding: 50px 56px;
+    text-align: left;
+  }
+
+  .profile-label {
+  padding-left: 25%;
+  }
+
+  .profile-control {
+    margin-left: 25%;
+    width: 40%;
+  }
+
+  #services {
+    margin-left: 25%;
+    font-family: "Montserrat", serif;
+    font-size: .8rem;
+  }
   footer {
     height: 100px;
+  }
+
+  select#role {
+  margin-left: 25%;
+  width: 15%;
+  height: 25px;
   }
