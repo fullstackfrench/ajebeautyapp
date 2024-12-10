@@ -19,7 +19,7 @@
   <h2>Set Up Your Professional Profile</h2>
  
   <section>
-  <form action="/profile/<%= profile == undefined ? '' : '?_method=PUT' %>" enctype="multipart/form-data" method= "POST">
+  <form action="/profile<%= profile == undefined ? '' : '?_method=PUT' %>" enctype="multipart/form-data" method="POST">
     <label for="profile-photo">Upload Profile Photo</label>
     <input required type="file" id="profile-photo" name="profile-photo" accept="image/png, image/jpeg, image/jpg" />
     <label for="name">Name</label>
@@ -30,10 +30,10 @@
     <label for="role">Role</label>
     <select name="role" id="role">
       <option>Please select a role:</option>
-      <option value="hairstylist" <%=profile?.role == "hairstylist"  ? "selected" : '' %>>Hairstylist</option>
-      <option value="barber" <%=profile?.role == "barber"  ? "selected" : '' %>>Barber</option>
-      <option value="make-up-artist" <%=profile?.role == "make-up-artist"  ? "selected" : '' %>>Make-Up Artist</option>
-      <option value="esthetician" <%=profile?.role == "esthetician"  ? "selected" : '' %>>Esthetician</option>
+      <option value="Hairstylist" <%=profile?.role == "Hairstylist"  ? "selected" : '' %>>Hairstylist</option>
+      <option value="Barber" <%=profile?.role == "Barber"  ? "selected" : '' %>>Barber</option>
+      <option value="Make-up Artist" <%=profile?.role == "Make-up Artist"  ? "selected" : '' %>>Make-Up Artist</option>
+      <option value="Esthetician" <%=profile?.role == "Esthetician"  ? "selected" : '' %>>Esthetician</option>
     </select>
 
     <label for="services"></label> 
@@ -49,11 +49,11 @@
     </div>
     
     
-    <button>Submit</button>
+    <button type="submit">Submit</button>
   </form>
   <% if (profile) {%>
     
-    <form action="/profile/portfolio %>" enctype="multipart/form-data" method= "POST">
+    <form action="/profile/portfolio" enctype="multipart/form-data" method= "POST">
       <div>
         <label for="portfolio">Add pictures to your portfolio.</label>
         <input required type="file" id="portfolio" name="portfolio" accept="image/png, image/jpeg, image/jpg" />

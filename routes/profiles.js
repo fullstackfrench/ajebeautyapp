@@ -23,7 +23,7 @@ router.post("/", ensureAuth, upload.single('profile-photo'), profilesController.
 
 router.post("/portfolio", ensureAuth, upload.single('portfolio'), profilesController.updatePortfolio);
 
-router.put("/", ensureAuth, profilesController.updateProfile);
+router.put("/", ensureAuth, upload.single('profile-photo'), profilesController.updateProfile);
 
 router.delete("/:id", ensureAuth, profilesController.deleteProfile);
 

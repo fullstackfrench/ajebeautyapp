@@ -58,6 +58,51 @@ body{
     word-wrap:break-word;
     font-size: 62.5%;
   }
+
+.partial-header a{
+  text-decoration: none;
+  color:#ECEC64;
+}
+
+.partial-header{
+  text-align: center;
+}
+
+header.container {
+  text-align: center;
+  justify-content: center;
+}
+.login-header {
+  font-family: "Montserrat", serif;
+  color: black;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 80px;
+}
+.login-form {
+  padding-top: 50px;
+}
+.form-label {
+  font-family: "Montserrat", serif;
+  font-size: 1.25rem;
+  color: black;
+  font-weight: 300;
+  display: block;
+  padding-left: 40%;
+  margin: 10px 0;
+  
+
+
+}
+.form-control {
+  margin-left: 40%;
+  width: 23%;
+  height: 25px;
+}
+
+  
+
   img{
     height: 200px;
   }
@@ -116,16 +161,38 @@ body{
     background-color: white;
     margin-left: 25%;
   }
-  .signUp {
+  .signUp, .login-submit {
     margin-right: 2%;
     border-radius: 1%;
     border: none;
     background-color: #ECEC64;
     font-family: "Montserrat", serif;
-    font-size: .8rem;
+    font-size: .9rem;
     font-weight: 700;
     padding-top: 8px;
     
+  }
+
+  .login-submit {
+    margin-left: 47%;
+    width: 8%;
+    font-size: 1rem;
+    margin-top: 10px;
+    padding-bottom: 8px;
+  }
+  .usertype {
+    margin-left: 40%;
+    width: 23.5%;
+    height: 35px;
+    margin-top: 15px;
+    font-family: "Montserrat", serif;
+  }
+  .no-account {
+    font-family: "Montserrat", serif;
+    font-size: .9rem;
+    color: black;
+    text-align: center;
+    margin-top: 10px;
   }
   .search {
     width: 45%;
@@ -158,7 +225,7 @@ body{
     font-family: "Montserrat", serif;
     font-weight: bold;
     font-size: 1.5rem;
-    padding-top: 30px;
+    padding: 50px 0;
   
   }
 
@@ -204,13 +271,46 @@ body{
   
   .bottom {
     display: flex;
+    justify-content: space-around;
   }
   .bottom section {
-    
-    height: 200px;
-    border: 1px solid black;
+    border: 1px solid lightslategrey;
+    border-radius: 2%;
+    text-align: center;
   }
-  
+  .profile-photo {
+    padding-top: 10px;
+  }
+  .user-name {
+    font-family: "Montserrat", serif;
+    color: black;
+    font-weight: bold;
+    padding-top: 8px;
+    display: block;
+    
+    font-size: 1.25rem;
+  }
+  .user-role {
+    font-family: "Montserrat", serif;
+    color: black;
+    font-weight: 200;
+    font-size: 1rem;
+    padding-top: 2px;
+    display: block;
+  }
+
+  .user-businessname {
+    font-family: "Montserrat", serif;
+    font-size: 1rem;
+    color: black;
+    padding-top: 2px;
+    display: block;
+    padding-bottom: 10px;
+  }
+
+  .profile-photo {
+    border-radius: 50%;
+  }
   .portfolio {
     display: flex;
   }
@@ -232,5 +332,14 @@ body{
 
   section.featured a {
     display: inline-block;
-    width: 33%; 
+    width: 20%;
+  }
+
+  section.featured a:hover {
+    box-shadow: 5px 5px 5px grey;
+    text-decoration: none;
+  }
+
+  footer {
+    height: 100px;
   }

@@ -29,7 +29,7 @@
     </form>
   </section>
  
-  <h2 class="middle-heading">browse by services</h2>
+  <h2 class="middle-heading">Browse by services</h2>
   <section class="middle services">
     
     <section class="filter">
@@ -57,20 +57,22 @@
 
   </section>
 
-  <h2>Top-rated beauty professionals</h2>
+  <h2 class="middle-heading" >Top-rated beauty professionals</h2>
   <section class="featured bottom">
     <% for (let i = 0; i < 3&&i<profiles.length; i++){ %>
       <a href="/profile/<%= profiles[i]._id %>"><section>
-        <span><%=profiles[i].businessName %></span>
-        <span><%=profiles[i].name %></span>
-        <span><%=profiles[i].role %></span>
+        <image class="profile-photo" src="<%=profiles[i].image %>">
+          <span class="user-name"><%=profiles[i].name %></span>
+          <span class="user-role"><%=profiles[i].role %></span>
+          <span class="user-businessname"><%=profiles[i].businessName %></span>
+        
       </section></a>
     <%} %>
     
   </section>
   
 
-
+  <footer></footer>
 
 
 </body>

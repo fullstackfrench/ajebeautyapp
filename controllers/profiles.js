@@ -57,20 +57,18 @@ module.exports = {
   updateProfile: async (req, res) => {
    console.log('updateProfile')
       let result 
-      console.log(req.file)
       if (req.file) {
         result = await cloudinary.uploader.upload(req.file.path);
       }
+      console.log('Body ',req.body)
    let profile = await Profile.findById({_id: req.user.profile})
-        console.log(profile)
-        console.log(req.body)
+        console.log('Profile ', profile)
         profile.name = req.body.name
         profile.businessName = req.body.businessName
         profile.role = req.body.role
         profile.services = ['Silk-press', 'Braids', 'Locs', 'Curly-cuts'].filter(service => req.body[service.toLowerCase().replace('-', '')]).join(', '),
         profile.cloudinaryId = result?.public_id,
         profile.image = result?.secure_url,
-        console.log(profile)
         profile.save()
         res.redirect("/profile")
   },
