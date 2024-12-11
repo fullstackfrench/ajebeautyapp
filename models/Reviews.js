@@ -5,10 +5,10 @@ const ReviewSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // cloudinaryId: {
-  //   type: String,
-  //   require: true,
-  // },
+  username: {
+    type: String,
+    required: true,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

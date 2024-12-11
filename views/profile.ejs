@@ -52,12 +52,12 @@
             <input type="checkbox" id="braids" name="braids" <%=profile?.services?.includes('Braids')
               ? 'checked= "true"' : '' %>>
             <label for="braids">Braids</label>
-            <input type="checkbox" id="locs" name="locs" <%=profile?.services?.includes('Locs') ? 'checked= "true"' : ''
+            <input type="checkbox" id="locs" name="locs" <%=profile?.services?.includes('Locs/Retwist') ? 'checked= "true"' : ''
               %>>
             <label for="locs">Locs/Retwists</label>
-            <input type="checkbox" id="curly-cuts" name="curlycuts" <%=profile?.services?.includes('Curly-cuts')
+            <input type="checkbox" id="curly-cuts" name="curlycuts" <%=profile?.services?.includes('Haircut')
               ? 'checked= "true"' : '' %>>
-            <label for="curly-cuts">Curly Cuts</label>
+            <label for="curly-cuts">Haircut</label>
           </div>
           
           <label for="profile-photo" class="form-label profile-label">Upload Profile Photo</label>
@@ -79,10 +79,9 @@
           <%} %>
 
           <form
-          action="/profile/deleteprofile/<%= profile.id %>?_method=DELETE"
+          action="/profile/deleteprofile/<%= profile?.id %>?_method=DELETE"
           method="POST"
-          class="col-3"
-        >
+          class="col-3">
         <button class="delete" type="submit">Delete Account</button>
         </form>
             
@@ -125,14 +124,12 @@
                     
                   </form>
                 </section>
-                <section>
-                  <h3>Reviews</h3>
+                <section class="reviews">
                   <ul class="row list-unstyled">
                     <% for(var i=0; i<reviews.length; i++) {%>
                       <li class="col-6 justify-content-between mt-5">
-                        <p>
-                          <%= reviews[i].reviewText%>
-                        </p>
+                        
+                        <p><span><%= reviews[i].username %></span> <%= reviews[i].reviewText%></p>
                       </li>
                       <% } %>
                   </ul>

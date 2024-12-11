@@ -2,10 +2,12 @@ const cloudinary = require("../middleware/cloudinary");
 const Profile = require("../models/Profile");
 const Reviews = require("../models/Reviews");
 
+
 module.exports = {
   getProfile: async (req, res) => {
     try {
       const profile = await Profile.findOne({ user: req.user.id });
+      console.log('Profile', profile)
       res.render("profile.ejs", { profile: profile, user: req.user});
     } catch (err) {
       console.log(err);
@@ -41,7 +43,7 @@ module.exports = {
         name: req.body.name,
         businessName: req.body.businessName,
         role: req.body.role,
-        services: ['Silk-press', 'Braids', 'Locs', 'Curly-cuts'].filter(service => req.body[service.toLowerCase().replace('-', '')]).join(', '),
+        services: ['Silk-press', 'Braids', 'Locs/Retwist', 'Haircut'].filter(service => req.body[service.toLowerCase().replace('-', '')]).join(', '),
         cloudinaryId: result?.public_id,
         image: result?.secure_url,
         user: req.user.id,
@@ -66,7 +68,7 @@ module.exports = {
         profile.name = req.body.name
         profile.businessName = req.body.businessName
         profile.role = req.body.role
-        profile.services = ['Silk-press', 'Braids', 'Locs', 'Curly-cuts'].filter(service => req.body[service.toLowerCase().replace('-', '')]).join(', '),
+        profile.services = ['Silk-press', 'Braids', 'Locs/Retwist', 'Haircut'].filter(service => req.body[service.toLowerCase().replace('-', '')]).join(', '),
         profile.cloudinaryId = result?.public_id,
         profile.image = result?.secure_url,
         profile.save()
@@ -168,6 +170,7 @@ module.exports = {
     try {
       // Find post by id
       let profile = await Profile.findById(req.params.id);
+      console.log('Profile', profile)
       // Delete image from cloudinary
       await cloudinary.uploader.destroy(profile.cloudinaryId);
       // Delete post from db

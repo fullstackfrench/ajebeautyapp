@@ -318,13 +318,10 @@ header.container {
   .portfolio {
     display: flex;
     justify-content: space-between;
+    margin: 10px 5%;
   }
   
-  .portfolio section {
-    height: 200px;
-    border: 1px solid black;
-    width: 33.33%;
-  }
+  
   
   .newRole, .submit, .newBusinessName {
     display: none;
@@ -414,6 +411,7 @@ header.container {
    .profile-information {
     display: flex;
     margin-left: 5%;
+    margin-top: 25px;
    }
    .name-role-business {
     margin-left: 3%;
@@ -430,6 +428,14 @@ header.container {
     font-weight: 700;
     font-size: 1.25rem;
     margin-top: 10px;
+   }
+
+   .review h2{
+    margin-left: 5%
+   }
+
+   .reviews span {
+    font-weight: bold;
    }
    .name-role-business p, 
    .name-role-business li  {
@@ -452,12 +458,13 @@ header.container {
    }
 
    .review-control {
-    margin-left: 0;
+    margin-left: 5%;
     margin-top: 10px;
     width: 50%;
    }
   footer {
     height: 100px;
+    background-color: #FDFDEF;
   }
 
 .review button {
@@ -465,12 +472,24 @@ header.container {
     font-family: "Montserrat", serif;
     font-size: .9rem;
     font-weight: 700;
-    padding-top: 8px;
+    padding-top: 8px 0;
     border: none;
     width: 10%;
     margin-left: 0;
+    
 }
 
+section.reviews {
+  margin-left: 5%;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.reviews p {
+  font-family: "Montserrat", serif;
+  font-size: 1rem;
+  margin-top: 5px;
+}
   select#role {
   margin-left: 25%;
   width: 15%;

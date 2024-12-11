@@ -19,7 +19,6 @@ const ProfileSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    require: true,
   },
   services: {
     type: String,
