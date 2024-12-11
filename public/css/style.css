@@ -58,7 +58,14 @@ body{
     word-wrap:break-word;
     font-size: 62.5%;
   }
+.logo a{
+  text-decoration: none;
+}
 
+.profile-header a {
+  text-decoration: none;
+  text-align: center;
+}
 .partial-header a{
   text-decoration: none;
   color:#ECEC64;
@@ -114,6 +121,7 @@ header.container {
     display: flex;
     border-bottom: lightgrey solid 1px;
     padding-bottom: 20px;
+    justify-content: center;
 
     
   }
@@ -276,6 +284,7 @@ header.container {
   .bottom {
     display: flex;
     justify-content: space-around;
+    padding-bottom: 50px;
   }
   .bottom section {
     border: 1px solid lightslategrey;
@@ -318,6 +327,7 @@ header.container {
   .portfolio {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin: 10px 5%;
   }
   
@@ -455,6 +465,7 @@ header.container {
    }
    .portfolio-images img{
     width: 100%;
+    margin-bottom: 20px;
    }
 
    .review-control {
@@ -496,4 +507,54 @@ section.reviews {
   height: 25px;
   }
 
-  
+.search-results a {
+  color: black;
+  text-decoration: none;
+}
+
+.search-results a:hover {
+  color: rgb(220, 100, 220);
+}
+.search-results li {
+  margin-left: 35%;
+}
+.search-results img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.search-float {
+  display: flex;
+  padding-top: 50px;
+
+}
+.search-results .name{
+  display: block;
+  padding-top: 10px;
+  padding-left: 5%;
+  font-family: "Montserrat", serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.search-results p {
+  display: block;
+  padding-top: 10px;
+  padding-left: 5%;
+  font-family: "Montserrat", serif;
+  font-size: 1rem;
+}
+
+.search-results .services {
+  padding-top: 10px;
+  padding-left: 1%;
+  font-family: "Montserrat", serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.description {
+  width: 50%;
+  margin-top: 20px;
+}

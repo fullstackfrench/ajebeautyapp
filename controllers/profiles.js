@@ -13,14 +13,7 @@ module.exports = {
       console.log(err);
     }
   },
-  getFeed: async (req, res) => {
-    try {
-      const posts = await Profile.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
-    } catch (err) {
-      console.log(err);
-    }
-  },
+  
   getProfileById: async (req, res) => {
     try {
       const profile = await Profile.findById(req.params.id);
@@ -43,7 +36,7 @@ module.exports = {
         name: req.body.name,
         businessName: req.body.businessName,
         role: req.body.role,
-        services: ['Silk-press', 'Braids', 'Locs/Retwist', 'Haircut'].filter(service => req.body[service.toLowerCase().replace('-', '')]).join(', '),
+        services: ['Silk-press', 'Braids', 'Locs', 'Curly-cuts'].filter(service => req.body[service.toLowerCase().replace('-', '')]).join(', '),
         cloudinaryId: result?.public_id,
         image: result?.secure_url,
         user: req.user.id,
@@ -57,23 +50,25 @@ module.exports = {
     }
   },
   updateProfile: async (req, res) => {
-   console.log('updateProfile')
-      let result 
-      if (req.file) {
-        result = await cloudinary.uploader.upload(req.file.path);
-      }
-      console.log('Body ',req.body)
-   let profile = await Profile.findById({_id: req.user.profile})
-        console.log('Profile ', profile)
-        profile.name = req.body.name
-        profile.businessName = req.body.businessName
-        profile.role = req.body.role
-        profile.services = ['Silk-press', 'Braids', 'Locs/Retwist', 'Haircut'].filter(service => req.body[service.toLowerCase().replace('-', '')]).join(', '),
-        profile.cloudinaryId = result?.public_id,
-        profile.image = result?.secure_url,
-        profile.save()
-        res.redirect("/profile")
-  },
+    console.log('updateProfile')
+       let result 
+       console.log(req.file)
+       if (req.file) {
+         result = await cloudinary.uploader.upload(req.file.path);
+       }
+    let profile = await Profile.findById({_id: req.user.profile})
+         console.log(profile)
+         console.log(req.body)
+         profile.name = req.body.name
+         profile.businessName = req.body.businessName
+         profile.role = req.body.role
+         profile.services = ['Silk-press', 'Braids', 'Locs', 'Curly-cuts'].filter(service => req.body[service.toLowerCase().replace('-', '')]).join(', '),
+         profile.cloudinaryId = result?.public_id,
+         profile.image = result?.secure_url,
+         console.log(profile)
+         profile.save()
+         res.redirect("/profile")
+   },
   updatePortfolio: async (req, res) => {
     let result 
       if (req.file) {
@@ -156,7 +151,7 @@ module.exports = {
          $search: {
            index: "aje-search",
            text: {
-             query: "curly-cuts",
+             query: "curly",
              path: {
                wildcard: "*"
              }

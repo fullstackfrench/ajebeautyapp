@@ -12,11 +12,8 @@
 
 <body>
 
-  <header>
-    <h1>aje beauty</h1>
-    <form action="/logout/?_method=GET" method="POST">
-      <button class="logout profilelogout">Logout</button>
-    </form>
+  <header class="profile-header">
+    <a href="/"><h1>aje beauty</h1></a>
   </header>
   <% if (user?.userType==='professional' ) { %>
 
@@ -27,9 +24,10 @@
 
         <form action="/profile<%= profile == undefined ? '' : '?_method=PUT' %>" enctype="multipart/form-data"
           method="POST">
-        
+
           <label for="name" class="form-label profile-label">Name</label>
-          <input class="form-control profile-control" id="name" type="text" name="name" value="<%=profile?.name ? profile.name : '' %>">
+          <input class="form-control profile-control" id="name" type="text" name="name"
+            value="<%=profile?.name ? profile.name : '' %>">
           <label for="business-name" class="form-label profile-label">Business Name</label>
           <input class="form-control profile-control" type="text" name="businessName" id="business-name"
             value="<%=profile?.businessName ? profile.businessName : '' %>">
@@ -43,8 +41,8 @@
             </option>
             <option value="Esthetician" <%=profile?.role=="Esthetician" ? "selected" : '' %>>Esthetician</option>
           </select>
-
-          <label for="services" class="form-label profile-label">Services</label>
+          <h3 class="form-label profile-label">Services</h3>
+          <label for="services"></label>
           <div id="services">
             <input type="checkbox" id="silk-press" name="silkpress" <%=profile?.services?.includes('Silk-press')
               ? 'checked= "true"' : '' %>>
@@ -52,14 +50,14 @@
             <input type="checkbox" id="braids" name="braids" <%=profile?.services?.includes('Braids')
               ? 'checked= "true"' : '' %>>
             <label for="braids">Braids</label>
-            <input type="checkbox" id="locs" name="locs" <%=profile?.services?.includes('Locs/Retwist') ? 'checked= "true"' : ''
+            <input type="checkbox" id="locs" name="locs" <%=profile?.services?.includes('Locs') ? 'checked= "true"' : ''
               %>>
             <label for="locs">Locs/Retwists</label>
-            <input type="checkbox" id="curly-cuts" name="curlycuts" <%=profile?.services?.includes('Haircut')
+            <input type="checkbox" id="curly-cuts" name="curlycuts" <%=profile?.services?.includes('Curly-cuts')
               ? 'checked= "true"' : '' %>>
-            <label for="curly-cuts">Haircut</label>
+            <label for="curly-cuts">Curly Cuts</label>
           </div>
-          
+
           <label for="profile-photo" class="form-label profile-label">Upload Profile Photo</label>
           <input required type="file" id="profile-photo" name="profile-photo"
             accept="image/png, image/jpeg, image/jpg" />
@@ -72,72 +70,80 @@
           <form action="/profile/portfolio" enctype="multipart/form-data" method="POST">
             <div>
               <label for="portfolio" class="form-label profile-label">Add pictures to your portfolio.</label>
-              <input class="portfolo-photo" required type="file" id="portfolio" name="portfolio" accept="image/png, image/jpeg, image/jpg" />
+              <input class="portfolo-photo" required type="file" id="portfolio" name="portfolio"
+                accept="image/png, image/jpeg, image/jpg" />
             </div>
             <button type="submit" class="login-submit">Submit</button>
           </form>
           <%} %>
 
-          <form
-          action="/profile/deleteprofile/<%= profile?.id %>?_method=DELETE"
-          method="POST"
-          class="col-3">
-        <button class="delete" type="submit">Delete Account</button>
-        </form>
-            
+            <form action="/profile/deleteprofile/<%= profile?.id %>?_method=DELETE" method="POST" class="col-3">
+              <button class="delete" type="submit">Delete Account</button>
+            </form>
+
 
 
             <% } else { %>
-            <section class="around-profile">
-              <section class="profile-page">
-                <section class="profile-information">
-                  <img src="<%= profile.image%>">
-                  <section class="name-role-business">
-                    <h3><%=profile.name %></h3>
-                    <p><span><%=profile.role %></span> at <span class="businessName"><%=profile.businessName %></span></p>
-                    <h4>Services</h4>
-                  <ul>
-                    <li>
-                      <%=profile.services %>
-                    </li>
-                  </ul>
+              <section class="around-profile">
+                <section class="profile-page">
+                  <section class="profile-information">
+                    <img src="<%= profile.image%>">
+                    <section class="name-role-business">
+                      <h3>
+                        <%=profile.name %>
+                      </h3>
+                      <p><span>
+                          <%=profile.role %>
+                        </span> at <span class="businessName">
+                          <%=profile.businessName %>
+                        </span></p>
+                      <h4>Services</h4>
+                      <ul>
+                        <li>
+                          <%=profile.services %>
+                        </li>
+                      </ul>
+                    </section>
+                  </section>
+
+                  <section class="portfolio-images">
+                    <ul class="portfolio">
+                      <% for(var i=0; i<profile.portfolio.length; i++) {%>
+                        <li class="col-6 justify-content-between mt-5">
+                          <img class="img-fluid" src="<%= profile.portfolio[i].image%>">
+                        </li>
+                        <% } %>
+                    </ul>
+                  </section>
+
+                  <section class="review">
+                    <h2>Leave a Review</h2>
+                    <form action="/review/createReview/<%= profile.id %>" method="POST">
+                      <div class="mb-3">
+                        <input type="text" class="form-control review-control" id="review" name="review">
+                        <button type="submit" class="btn btn-primary l">Submit</button>
+                      </div>
+
+                    </form>
+                  </section>
+                  <section class="reviews">
+                    <ul class="row list-unstyled">
+                      <% for(var i=0; i<reviews.length; i++) {%>
+                        <li class="col-6 justify-content-between mt-5">
+
+                          <p><span>
+                              <%= reviews[i].username %>
+                            </span>
+                            <%= reviews[i].reviewText%>
+                          </p>
+                        </li>
+                        <% } %>
+                    </ul>
                   </section>
                 </section>
-  
-                <section class="portfolio-images">
-                  <ul class="portfolio">
-                    <% for(var i=0; i<profile.portfolio.length; i++) {%>
-                      <li class="col-6 justify-content-between mt-5">
-                        <img class="img-fluid" src="<%= profile.portfolio[i].image%>">
-                      </li>
-                      <% } %>
-                  </ul>
-                </section>
-  
-                <section class="review">
-                  <h2>Leave a Review</h2>
-                  <form action="/review/createReview/<%= profile.id %>" method="POST">
-                    <div class="mb-3">
-                      <input type="text" class="form-control review-control" id="review" name="review">
-                      <button type="submit" class="btn btn-primary l">Submit</button>
-                    </div>
-                    
-                  </form>
-                </section>
-                <section class="reviews">
-                  <ul class="row list-unstyled">
-                    <% for(var i=0; i<reviews.length; i++) {%>
-                      <li class="col-6 justify-content-between mt-5">
-                        
-                        <p><span><%= reviews[i].username %></span> <%= reviews[i].reviewText%></p>
-                      </li>
-                      <% } %>
-                  </ul>
-                </section>
               </section>
-            </section>
-            
-              
+
+
 
 
 
@@ -146,7 +152,7 @@
               <% } %>
       </section>
     </section>
-<footer></footer>
+    <footer></footer>
 </body>
 
 </html>
